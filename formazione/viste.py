@@ -192,7 +192,7 @@ def aspirante_corso_base_lezioni(request, me, pk):
     if not me.permessi_almeno(corso, MODIFICA):
         return redirect(ERRORE_PERMESSI)
 
-    partecipanti = Persona.objects.filter(partecipazioni_corsi__in=corso.partecipazioni_confermate())
+    partecipanti = Persona.objects.filter(partecipazioni_corsi__in=corso.partecipazioni_confermate()).order_by('cognome', 'nome')
     lezioni = corso.lezioni.all()
     moduli = []
     partecipanti_lezioni = []
@@ -204,7 +204,7 @@ def aspirante_corso_base_lezioni(request, me, pk):
             modulo.save()
 
         moduli += [modulo]
-        partecipanti_lezione = partecipanti.exclude(assenze_corsi_base__lezione=lezione).order_by('nome', 'cognome')
+        partecipanti_lezione = partecipanti.exclude(assenze_corsi_base__lezione=lezione)
 
         if request.POST and request.POST['azione'] == 'salva':
             for partecipante in partecipanti:
