@@ -316,7 +316,7 @@ def us_trasferimento(request, me):
                 trasf.esegui()
 
                 Messaggio.costruisci_e_invia(
-                    oggetto="Richiesta di trasferimento",
+                    oggetto="Notifica di trasferimento in entrata",
                     modello="email_richiesta_trasferimento_cc.html",
                     corpo={
                         "trasferimento": trasf,
@@ -337,7 +337,7 @@ def us_trasferimento(request, me):
                 trasf.richiedi()
 
                 Messaggio.costruisci_e_invia(
-                    oggetto="Richiesta di trasferimento",
+                    oggetto="Notifica di trasferimento in entrata",
                     modello="email_richiesta_trasferimento_cc.html",
                     corpo={
                         "trasferimento": trasf,

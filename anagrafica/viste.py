@@ -866,7 +866,7 @@ def utente_trasferimento(request, me):
                 ]
             )
             Messaggio.costruisci_e_invia(
-                oggetto="Richiesta di trasferimento",
+                oggetto="Notifica di trasferimento in entrata",
                 modello="email_richiesta_trasferimento_cc.html",
                 corpo={
                     "trasferimento": trasf,
